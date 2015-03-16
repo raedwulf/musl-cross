@@ -34,9 +34,9 @@ BINUTILS_URL=http://ftp.gnu.org/gnu/binutils/binutils-2.25.tar.bz2
 #BINUTILS_URL=http://landley.net/aboriginal/mirror/binutils-2.17.tar.bz2
 GCC_VERSION=4.9.2
 GDB_VERSION=7.4.1
-GMP_VERSION=4.3.2
-MPC_VERSION=0.8.1
-MPFR_VERSION=2.4.2
+GMP_VERSION=6.0.0
+MPC_VERSION=1.0.2
+MPFR_VERSION=3.1.2
 LIBELF_VERSION=71bf774909fd654d8167a475333fa8f37fbbcb5d
 # use kernel headers from vanilla linux kernel - may be necessary for porting to a bleeding-edge arch
 # LINUX_HEADERS_URL=http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.12.6.tar.xz

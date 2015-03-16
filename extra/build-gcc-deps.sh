@@ -28,7 +28,7 @@ set -ex
 PREFIX="$CC_PREFIX/$TRIPLE"
 
 # GMP
-fetchextract ftp://ftp.gmplib.org/pub/gmp-$GMP_VERSION/ gmp-$GMP_VERSION .tar.bz2
+fetchextract http://gmplib.org/download/gmp/ gmp-$GMP_VERSION .tar.bz2
 cp -f "$MUSL_CC_BASE/extra/config.sub" gmp-$GMP_VERSION/configfsf.sub
 buildinstall '' gmp-$GMP_VERSION --host="$TRIPLE" --enable-static --disable-shared
 

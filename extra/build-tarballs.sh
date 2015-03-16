@@ -27,7 +27,8 @@ fi
 set -ex
 
 # Figure out our id
-HG_ID=`cd "$MUSL_CC_BASE" ; hg id | sed 's/ .*//'`
+#HG_ID=`cd "$MUSL_CC_BASE" ; hg id | sed 's/ .*//'`
+GIT_ID=`cd "$MUSL_CC_BASE" ; git rev-parse --short HEAD | sed 's/ .*//'`
 
 cleanup() {
     for pkg in binutils gcc linux kernel-headers musl gmp mpfr mpc
@@ -128,7 +129,7 @@ GCC_CONFFLAGS=--disable-lto-plugin
         # And build
         "$MUSL_CC_BASE"/build.sh
         sed -E '/^C(C|XX)=/d ; /^export/d' -i config.sh
-        [ "$NO_GCC_DEPS" != "yes"] && "$MUSL_CC_BASE"/extra/build-gcc-deps.sh
+        [ "$NO_GCC_DEPS" != "yes" ] && "$MUSL_CC_BASE"/extra/build-gcc-deps.sh
 
         # Clean up
         rm -f config.sh
@@ -140,7 +141,7 @@ GCC_CONFFLAGS=--disable-lto-plugin
         cd "$PREFIX_BASE"
         rm -rf "$TRIPLE/share"
         find "$TRIPLE/bin" "$TRIPLE/libexec/gcc" -type f -exec "$NATIVE_CROSS-strip" --strip-unneeded '{}' ';'
-        echo 'Cross-compiler prefix built by musl-cross '"$HG_ID"': http://www.bitbucket.org/GregorR/musl-cross' > "$TRIPLE/info.txt"
+        echo 'Cross-compiler prefix built by musl-cross '"$GIT_ID"': http://github.com/GregorR/musl-cross' > "$TRIPLE/info.txt"
         tar -cf - "$TRIPLE/" | xz -c > "$T_PRE$TRIPLE$T_SUFF.tar.xz"
         )
     fi

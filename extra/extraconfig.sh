@@ -1,9 +1,10 @@
 # This is a suggested extraconfig.sh for build-tarballs.sh
 
 case "$ARCH" in
+    armhf* | \
     arm*hf)
-        GCC_BOOTSTRAP_CONFFLAGS="$GCC_BOOTSTRAP_CONFFLAGS --with-arch=armv5t --with-fpu=vfp"
-        GCC_CONFFLAGS="$GCC_CONFFLAGS --with-arch=armv5t --with-fpu=vfp"
+        GCC_BOOTSTRAP_CONFFLAGS="$GCC_BOOTSTRAP_CONFFLAGS --with-arch=armv7-a --with-tune=cortex-a15 --with-fpu=neon-vfpv4"
+        GCC_CONFFLAGS="$GCC_CONFFLAGS --with-arch=armv7-a --with-tune=cortex-a15 --with-fpu=neon-vfpv4"
         ;;
         
     arm*)
